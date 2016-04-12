@@ -1,0 +1,169 @@
+/* CSS declarations go here */
+.home, html, body{
+	display: block;
+	height: 100%;
+}
+
+.home{
+	display: table;
+	/*background-image: url('http://lists10.com/wp-content/uploads/2014/05/facilitate-politics.jpg');*/
+	background-color: #B20505;
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: sans-serif;
+	text-align: center;
+	width: 100%;
+}
+.home-wrapper{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+.dashboard{
+	   
+	   /*margin-top: 350px ;*/
+	   margin-right: auto;
+	   margin-left: auto;
+
+	
+	
+
+
+	
+	border: 3px solid #55E273;
+	width: 150px; 
+	font-size: 22px;
+	
+	
+	padding: 10px 20px 10px 20px ;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.scholarships{
+
+
+
+
+
+	
+	margin-right: auto;
+	margin-left: auto ;
+	border: 3px solid #55E273;
+	width: 150px; 
+	font-size: 22px;
+	
+	
+	padding: 10px 20px 10px 20px ;
+	border-radius: 10px;
+	text-align: center;
+	}
+
+	
+
+
+.dashboard a{
+	text-align: center;
+	 color: #FFFFFF;
+	 text-decoration: none ;
+
+}
+.scholarships a{
+	text-align: center;
+
+	color: #FFFFFF;
+	 text-decoration: none ;
+}
+
+
+
+
+
+
+
+.signInbtns{
+	width: 150px ;
+	padding: 10px ;
+	background-color: #A4112C;
+	border-radius: 10px ;
+	font-size: 18px;
+	
+
+	
+}
+
+.login{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	background-color: #FFFFFF ;
+	width: 300px;
+    padding: 100px;
+    border: 25px solid #CFCCCD;
+    
+}
+
+.createAccLink{
+	margin-top: 20px ;
+	
+}
+
+.HomeLink{
+	margin-top: 20px ;
+
+}
+
+.logoutBar{
+	background-color: #A4112C;
+	font-size: 16px;
+	color: #FFFFFF;
+	text-align: center;
+
+
+	
+
+}
+
+.loggedInDashboard{
+	margin-left: auto;
+	margin-right: auto;
+	
+	background-color: #FFFFFF ;
+	
+    height: 1000px;
+    width: 1300px;
+    border: 25px solid #CFCCCD;
+
+}
+
+#result a{
+
+	color: #000000;
+
+}
+
+
+.logInlinks a{
+	color: #A4112C;
+	text-decoration: none;
+	
+}
+
+
+#headingDisp{
+	margin-left: 10px;
+}
+
+	
+
+
+
+

@@ -1,0 +1,353 @@
+<head>
+  <title>Skolo</title>
+  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js'></script> 
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+
+</body>
+
+ <template name="home">
+  <div class='home'>
+    <div class='home-wrapper'>
+      <h3 style="color:white;">Welcome to Skolo!</h3>
+ <img src="/images/scholarshipApp.jpeg" class="img-circle" alt="background-image" width="200" height="100"> 
+    
+    <br>
+    <br>
+    <br>
+      <div class="dashboard"><a href= "/dashboard"> Dashboard</a> </div>
+      <br>  
+      <div class="scholarships"><a href="/scholarship">Scholarships</a></div>
+    </div>
+  </div>
+ </template>
+
+ <template name="dashboard">
+
+  {{#if currentUser}}
+   {{>logout}}
+  {{>loggedInUser}}
+  <div class="container">
+
+    
+
+  
+    <br> <h4 id="headingDisp"> Click on scholarship name for full details</h4>
+    <br> <br> 
+
+    
+  
+    <ul>
+    {{#each dispschol}}
+        {{>scholDashDisp}}
+    {{/each}}
+    </ul>
+  
+
+
+  </div>
+
+  {{else}}
+  {{>login}}
+  {{/if}}
+
+ </template> 
+
+ 
+ <template name="register">
+    
+    <div class="container">
+      <center>
+    
+    <h3>Create your Account</h3><br>
+    
+
+    <form class="form-group">
+      
+        <h4>Username</h4>
+        
+        <input type="text" id="username" class="form-control"><br>
+        <h4>Password</h4>  <input type="password" id="password" class="form-control"><br><br>
+      <input type="submit" value="Sign In" class="signInbtns">
+    </form>
+ 
+ <a href="/dashboard" class="createAccLink" > Dashboard </a></center>
+</div>
+
+</template>
+
+<template name="login">
+
+  
+ 
+    <div class="container">
+    <br>
+    <center><h3>Login to your dashboard</h3><br>
+  
+    <div class="form-group">
+    
+    <form>
+        <h4> Username</h4> <input type="text" id="login-username" class="form-control">
+        <h4>Password</h4> <input type="password" id="login-password" class="form-control"> <br><br>
+    <input type="submit" value="Login" class="signInbtns"> <br>
+    </form>
+    </div>
+    
+   
+   
+   
+   
+      <a href="/register" class="createAccLink">Create Account</a><br>
+      
+     <a href="/" class="HomeLink"> Home </a>
+      </center>  
+      </div>  
+
+</template>
+
+<template name="logout">
+
+  <div class="logoutBar">
+    <div class="usernameDisplay">
+   <p style="display:inline"> Welcome,</p> {{currentUser.username}} <p style="display:inline">!</p>
+  </div>
+   
+  <a href="#" class="logout"> Logout </a>
+  
+
+  </div>
+</template>
+
+<template name="loggedInUser">
+  
+  <br>
+  <br>
+  
+  
+  
+  <div class="container" role="tablist">
+    <ul class="nav nav-tabs">
+ <li class="active"><a href="/dashboard">  Dashboard</a> </li>
+<li class="active"><a href="/scholarships"> Scholarships </a> </li> 
+</ul>
+</div>
+
+
+
+
+
+   
+  
+  
+
+  
+
+</template>
+
+<template name="scholDashDisp">
+
+   
+  <li>
+    <a href='{{url}}' target='_blank'>{{name}}</a>
+   [<a href="#" class="delete-schol" style="color:#000000;">Delete</a>]
+  </li>
+
+</template>
+
+<!--<template name="loginDashboard">
+
+  {{>logout}}
+  {{>loggedInUser}}
+
+  <div class="container">
+
+    
+
+  
+    <br> <h4 id="headingDisp"> Click on scholarship name for full details</h4>
+    <br> <br> 
+
+    
+  
+    <ul>
+    {{#each dispschol}}
+        {{>scholDashDisp}}
+    {{/each}}
+    </ul>
+  
+
+
+  </div>
+
+
+
+    
+
+ </template>-->
+
+ 
+
+<template name="scholDisplay">
+  <li class="{{checked}}"> <input type="checkbox" {{checked}} value="{{name}}:{{url}}" name="scholName" > <a href="{{url}}" target="_blank">{{name}}</a>
+  
+  </li>
+
+
+</template>
+
+
+<template name="scholarships">
+
+  {{>logout}}
+  {{>loggedInUser}}
+
+
+<div class="container">
+
+  <ul>
+    {{#each schol}}
+      {{>scholDisplay}}
+    {{/each}}
+    </ul>
+
+</div>
+
+
+</template>
+
+
+<template name="scholarship">
+
+<div class="container">
+  <br>
+  <button type="button" class="btn btn-danger"> <a href="/" style="outline:none;"> <span class="glyphicon glyphicon-menu-left"> Home </span></a> </button>
+
+
+<br><br>
+<form>
+<input type="checkbox" value="<a href='http://www.minorityaffairs.gov.in/prematric'>Pre-Matric Scholarship by Ministry of Minority Affairs </a>"> <a href="http://www.minorityaffairs.gov.in/prematric">Pre-Matric Scholarship by Ministry of Minority Affairs </a> <br>
+
+<input type="checkbox"  value="<a href='http://www.minorityaffairs.gov.in/Postmetric/'>Post matric scholarship </a>"> 
+<a href="http://www.minorityaffairs.gov.in/Postmetric/">Post matric scholarship </a> <br>
+
+<input type="checkbox"  value="<a href='http://www.icbse.com/scholarships'> List of scholarships for school students and those entering college </a>"> 
+<a href="http://www.icbse.com/scholarships"> List of scholarships for school students and those entering college </a> <br> 
+
+ <input type="checkbox"  value="<a href='http://www.momascholarship.gov.in/'> Minority Welfare e-Scholarship Program(30% of theses scholarships are reserved for girls)</a>">
+  <a href="http://www.momascholarship.gov.in/ "> Minority Welfare e-Scholarship Program(30% of theses scholarships are reserved for girls)</a><br>
+
+<input type="checkbox"  value="<a href='http://vikaspedia.in/education/policies-and-schemes/schemes-for-elementary-secondary-higher-education'>This website has a nice listing of the various scholarships available </a>"> 
+<a href="http://vikaspedia.in/education/policies-and-schemes/schemes-for-elementary-secondary-higher-education">This website has a nice listing of the various scholarships available </a><br> 
+
+ <input type="checkbox"  value=" <a href='http://www.foryoungwomeninscience.com/'>L’oreal’s “Young Women in Science Scholarship</a>"> 
+ <a href="http://www.foryoungwomeninscience.com/">L’oreal’s “Young Women in Science Scholarship</a><br>
+
+ <input type="checkbox"  value="<a href='http://www.inspire-dst.gov.in/award.html'> INSPIRE’s SEATS Scholarship provided by Department of Science and Technology, India. Aimed at kids from grades 6 to 10 </a>"> 
+ <a href="http://www.inspire-dst.gov.in/award.html"> INSPIRE’s SEATS Scholarship provided by Department of Science and Technology, India. Aimed at kids from grades 6 to 10 </a><br>
+ 
+ <input type="checkbox"  value="<a href='http://www.inspire-dst.gov.in/SHE.html'>INSPIRE’s SHE Scholarship offered to youth 'undertaking studies in science intensive programs' </a> "> 
+ <a href="http://www.inspire-dst.gov.in/SHE.html">INSPIRE’s SHE Scholarship offered to youth “undertaking studies in science intensive programs." </a> <br>
+
+<input type="checkbox"  value="<a href='http://www.velammalsciencetalenttest.com/index.html'> Velammal Science Talent Search for school students from Class 1 to 12 in Tamil Nadu and Pondicherry </a>"> 
+<a href="http://www.velammalsciencetalenttest.com/index.html"> Velammal Science Talent Search for school students from Class 1 to 12 in Tamil Nadu and
+Pondicherry </a><br>
+
+ <input type="checkbox"  value="<a href='http://www.faeaindia.org/'>Foundation for Academic Excellence and Access. Scholarship aimed at students who have completed their Grade 12 </a>"> 
+ <a href="http://www.faeaindia.org/">Foundation for Academic Excellence and Access. Scholarship aimed at students who have completed their Grade 12 </a>
+ <br>
+
+ <input type="checkbox"  value="<a href='http://www.amul.in/award/lists/vidyashree.php'>Amul’s Vidya Shree Award for top performers in Grade 10 and 12 exams </a>"> 
+ <a href="http://www.amul.in/award/lists/vidyashree.php">Amul’s Vidya Shree Award for top performers in Grade 10 and 12 exams </a><br>
+
+ <input type="checkbox"  value="<a href='http://tatabuildingindia.com/New-Site/'>“Tata Building India” : Essay writing competition for school children from Grades 6 to 12. Prizes on offer. </a> "> 
+ <a href="http://tatabuildingindia.com/New-Site/">“Tata Building India” : Essay writing competition for school children from Grades 6 to 12. Prizes on offer. </a> <br>
+
+ <input type="checkbox"  value="<a href='http://www.marrsspellingbee.com/site/index'>MaRRS Spelling Bee contest </a>">
+  <a href="http://www.marrsspellingbee.com/site/index">MaRRS Spelling Bee contest </a><br>
+
+ <input type="checkbox"  value="<a href='http://www.kvpy.iisc.ernet.in/main/applications.htm'> Kishore Vaigyanik Protsahan Yojana (KVPY). KVPY can be written by students from class 11th and 12th</a>"> 
+ <a href="http://www.kvpy.iisc.ernet.in/main/applications.htm"> Kishore Vaigyanik Protsahan Yojana (KVPY). KVPY can be written by students from class 11th and 12th </a> <br>
+
+<input type="checkbox"  value="<a href='http://mhrd.gov.in/scholarships-education-loan-0'> Central Scheme Of Scholarship For College And University Students</a>">
+<a href="http://mhrd.gov.in/scholarships-education-loan-0"> Central Scheme Of Scholarship For College And University Students</a><br>
+
+<input type="checkbox" value="<a href='http://india.yourstory.com/contests/1/young-india-challenge-ideas-for-change/about'>Young India Challenge for School students : Classes 8th - 12th eligible</a>"> 
+<a href="http://india.yourstory.com/contests/1/young-india-challenge-ideas-for-change/about">Young India Challenge for School students : Classes 8th - 12th eligible</a> <br>
+
+<input type="checkbox"  value="<a href='http://www.icbse.com/scholarships/merit-scholarship/single-girl-child'>Girl Child Scholarship Scheme: Classes 1 to 12 eligible</a>">
+<a href="http://www.icbse.com/scholarships/merit-scholarship/single-girl-child">Girl Child Scholarship Scheme: Classes 1 to 12 eligible</a> <br>
+
+<input type="checkbox" value="<a href='http://www.scholarshipsinindia.com/MAHAMANA-MALVIYA-SCHOLARSHIP.html'> “Malviya Scholarship” : Aimed at Grade 12 students</a>">  
+<a href="http://www.scholarshipsinindia.com/MAHAMANA-MALVIYA-SCHOLARSHIP.html"> “Malviya Scholarship” : Aimed at Grade 12 students</a>
+<br>
+
+<input type="checkbox" value="<a href='http://www.colgate.co.in/app/Colgate/IN/Scholarship/terms-and-condition.cvsp'>Colgate Scholarship</a>">
+<a href="http://www.colgate.co.in/app/Colgate/IN/Scholarship/terms-and-condition.cvsp">Colgate Scholarship.  </a> <br> <br>
+
+<input type="button" onclick="promptlogin()" value="Submit">
+
+
+
+</form>
+
+
+
+</div>
+
+
+ 
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ <script>
+ function promptlogin(){
+  Router.go('/dashboard');
+ }
+
+</script>
+
+
+
+</template>
+
+
+
+
+
+ 
+
+ 
+ 
+
+    
+      
+    
+    
+
+
+
+    
+
+
+
+
+  
+
+
+
+
+    
+
+
+
+
+
+  
+
+
+
+ 
