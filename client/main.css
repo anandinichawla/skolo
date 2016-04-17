@@ -163,6 +163,30 @@
 }
 
 	
+.postbtns{
+	/*width: 75px ;
+	padding: 10px ;*/
+	background-color: #A4112C;
+	border-radius: 10px ;
+	font-size: 18px;
+	
+
+}
+
+.comments{
+  background-color:#F0E5E5;
+  width: 100%;
+}
+
+.filters {
+	background-color:#F0E5E5;
+	width: 25%;
+	border-radius: 10px;
+	border:1px solid #A4112C;
+	padding: 4px;
+
+
+}
 
 
 

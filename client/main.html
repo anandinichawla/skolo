@@ -1,6 +1,6 @@
 <head>
   <title>Skolo</title>
-  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js'></script> 
+  <script type="text/javascript" src='js/lodash.min.js'></script> 
  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -21,6 +21,7 @@
       <div class="dashboard"><a href= "/dashboard"> Dashboard</a> </div>
       <br>  
       <div class="scholarships"><a href="/scholarship">Scholarships</a></div>
+
     </div>
   </div>
  </template>
@@ -132,20 +133,14 @@
     <ul class="nav nav-tabs">
  <li class="active"><a href="/dashboard">  Dashboard</a> </li>
 <li class="active"><a href="/scholarships"> Scholarships </a> </li> 
+<li class="active"><a href="/discussion">Discussion Board</a></li>
 </ul>
 </div>
 
 
-
-
-
-   
-  
-  
-
-  
-
 </template>
+
+
 
 <template name="scholDashDisp">
 
@@ -204,6 +199,27 @@
   {{>logout}}
   {{>loggedInUser}}
 
+  <div class="filters col-xs-offset-0">
+   <h3> Filters</h3>
+  <form>
+    <h4>Study Level</h4>
+    <input type="radio" name="types" onclick="" value="school"> School <br>
+    <input type="radio" name="types" onclick="" value="college"> College <br>
+    <input type="radio" name="types" onclick="" value="post graduation"> Post Graduation 
+
+    <br>
+ 
+    <h4>Gender</h4>
+    <input type="radio" name="gender" onclick="" value="male"> Male <br>
+    <input type="radio" name="gender" onclick="" value="female"> Female <br>
+    <input type="radio" name="gender" onclick="" value="both"> Both 
+
+    <button type="submit"> Filter</button>
+  </form>
+
+
+  </div>
+
 
 <div class="container">
 
@@ -215,6 +231,17 @@
 
 </div>
 
+
+<div class="container">
+
+  <ul>
+    
+    {{#each sch}}
+      {{>scholDisplay}}
+    {{/each}}
+    </ul>
+
+</div>
 
 </template>
 
@@ -313,6 +340,77 @@ Pondicherry </a><br>
 
 
 </template>
+
+
+<template name="postForm">
+    <form method="post">
+      <div class="form-group">
+        <br>
+        <!--<label>Post</label>-->
+        <input type="text" name="post" class="form-control" placeholder="What's on your mind?">
+     
+       <button type="submit" class="postbtns" style="outline:none"> Post </button>
+       <hr>
+      </div>
+    </form>
+</template>
+
+<template name="discussion">
+
+  {{>logout}}
+  {{>loggedInUser}}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10 ">
+        {{>postForm}}
+      </div>
+    </div>
+ 
+    
+    <div class="post">
+      <div class="col-xs-6 col-xs-offset-3">
+
+        {{#each post }}
+
+            <br>
+            <h4>{{ question }} - {{user}}</h4>
+
+          <form method="post">
+          <div class="form-group">
+            <input type="hidden" name="id" value="{{_id}}">
+          </div>
+          
+            
+               <div class="form-group" >
+                  <input type="text" name="comment" placeholder="comment...">
+          
+                   <button type="submit" class="postbtns" style="outline:none">Comment</button>
+               </div>
+           </form>
+
+           
+           <div class="container">
+             <div class="comments"> 
+              {{#each comments}}
+                <h5>{{comment}} - <span style="font color:#850b18">{{user}}</span></h5>
+              {{/each}}
+            </div>
+          </div>
+
+       
+       
+        
+        {{/each}}
+       </div> 
+    
+    </div>
+    
+  </div>
+
+
+</template>
+
 
 
 

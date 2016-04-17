@@ -3,6 +3,8 @@ import { Template } from 'meteor/templating';
 
 import './main.html';
 
+var sch;
+
 Router.route('/' , {
 	template: 'home'
 }) ;
@@ -15,9 +17,8 @@ Router.route('/scholarships');/*,{
 Router.route('/register') ;
 Router.route('/loginDashboard');
 Router.route('/scholarship');
+Router.route('/discussion');
 
-ScholList= new Mongo.Collection('scholList');
-DispSchol= new Meteor.Collection('dispSchol');
 
 if (Meteor.isClient)
 {
@@ -88,11 +89,41 @@ if (Meteor.isClient)
 
 Template.scholarships.helpers({
     'schol': function(){
-        return ScholList.find()
+        return ScholList.find({})
     }
 });
 
+Template.scholarships.events({
+    'submit form':function(event){
+        event.preventDefault();
+        var type = event.target.types.value;
+        var gender = event.target.gender.value;
+        }
+      
+         
+       'sch': function(event){
+        return ScholList.find({'type':type,'gender':gender})
+       }
+        
+    
+});
+      
+
 Template.scholDisplay.events({
+
+    // var scholist = [
+    // {'name':'dummy','url':'dummy'},
+    // {'name':'smoe','url':'something'}
+    // ]
+    // _.each(scholist,function(shcl){
+
+    //     ScholList.insert(shcl)
+    // });
+
+
+
+
+
     'change [type=checkbox]':function(event){
     event.preventDefault();
     var elem = $(event.currentTarget);
@@ -155,32 +186,75 @@ Template.scholDashDisp.events({
 }
 });
 
+//  Template.discussion.events({
+//  'submit form':function(event){
+//      event.preventDefault();
 
+//      var newPost = {
+//         text: event.target.post.value;
+//      }
+//      Post.insert(newPost);
+//   }
+ 
+// });
 
+Template.postForm.events({
+    'submit form':function(event){
+        event.preventDefault();
 
+        var newPost = {
+            question : event.target.post.value,
+            user : Meteor.user().username,
+            comments : [
 
-Meteor.subscribe('dispSchol');
-Meteor.subscribe('scholList');
+            ]
+        };
+        Post.insert(newPost);
+    }
+});
+
+Template.discussion.helpers({
+    post: function(){
+        console.log("Hello");
+        return Post.find({});
+    }
+});
+
+Template.discussion.events({
+    'submit form': function(event){
+        event.preventDefault();
+            
+            var questionId = event.target.id.value;
+            console.log(questionId);
+           
+           var cmnts;
+           
+            if(event.target.comment.value){
+                cmnts = 
+                {
+                    comment: event.target.comment.value,
+                    user : Meteor.user().username
+                }
+            }
+        
+         Post.update(
+            {_id: questionId},
+            {
+                $addToSet:{'comments':cmnts}
+            });
+
+      
+
+    }
+});
+
+// Meteor.subscribe('dispSchol');
+// Meteor.subscribe('scholList');
 
 }/* if statement*/
 
 
 
-/*if(Meteor.isServer){
-    // server-side code goes here
-    Meteor.publish('dispSchol',function(){
-        var currentUser=this.userId;
-        return DispSchol.find({createdBy:currentUser}); //{createdBy:currentUser}
-    });
-
-    Meteor.publish('scholList', function(){
-        var currentUser = this.userId;
-        return ScholList.find({}); // 
-    });
-
-
-
-}*/
 
 
 
