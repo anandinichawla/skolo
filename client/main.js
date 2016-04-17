@@ -90,6 +90,11 @@ if (Meteor.isClient)
 Template.scholarships.helpers({
     'schol': function(){
         return ScholList.find({})
+    },
+    'sch': function () {
+      var type = Session.get('type');
+      var gender = Session.get('gender');
+      return ScholList.find({type:type,gender:gender});
     }
 });
 
@@ -98,13 +103,11 @@ Template.scholarships.events({
         event.preventDefault();
         var type = event.target.types.value;
         var gender = event.target.gender.value;
+        Session.set('type', type);
+        Session.set('gender',gender);
         }
       
-         
-       'sch': function(event){
-        return ScholList.find({'type':type,'gender':gender})
-       }
-        
+   
     
 });
       

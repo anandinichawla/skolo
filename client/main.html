@@ -223,9 +223,20 @@
 
 <div class="container">
 
-  <ul>
+<!--   <ul>
     {{#each schol}}
       {{>scholDisplay}}
+    {{/each}}
+    </ul> -->
+
+    <ul>
+    
+    {{#each sch}}
+      {{>scholDisplay}}
+        {{else}}
+        {{#each schol}}
+        {{>scholDisplay}}
+      {{/each}}
     {{/each}}
     </ul>
 
@@ -234,12 +245,7 @@
 
 <div class="container">
 
-  <ul>
-    
-    {{#each sch}}
-      {{>scholDisplay}}
-    {{/each}}
-    </ul>
+  
 
 </div>
 
