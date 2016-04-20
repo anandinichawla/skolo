@@ -199,6 +199,8 @@
   {{>logout}}
   {{>loggedInUser}}
 
+  <div class=""> <h5> Do check out<a href="https://www.scholarships.gov.in/main.do"> National Scholarhip Portal </a> for end to end process of application submission, verfication, sanction and <br> disbursal for all scholarships provided by the government of India. </h5></div>
+  
   <div class="filters col-xs-offset-0">
    <h3> Filters</h3>
   <form>
@@ -223,23 +225,13 @@
 
 <div class="container">
 
-  <ul>
-    {{#each schol}}
+ {{#each sch}}
       {{>scholDisplay}}
+        {{else}}
+        {{#each schol}}
+        {{>scholDisplay}}
+      {{/each}}
     {{/each}}
-    </ul>
-
-</div>
-
-
-<div class="container">
-
-  <ul>
-    
-    {{#each sch}}
-      {{>scholDisplay}}
-    {{/each}}
-    </ul>
 
 </div>
 
@@ -343,11 +335,12 @@ Pondicherry </a><br>
 
 
 <template name="postForm">
-    <form method="post">
+    <form class="post">
       <div class="form-group">
         <br>
         <!--<label>Post</label>-->
-        <input type="text" name="post" class="form-control" placeholder="What's on your mind?">
+        <!-- <input type="text" name="post" class="form-control" placeholder="What's on your mind?"> -->
+        <textarea rows="" columns="" name="post" class="form-control" placeholder="What's on your mind?"> </textarea>
      
        <button type="submit" class="postbtns" style="outline:none"> Post </button>
        <hr>
@@ -376,7 +369,7 @@ Pondicherry </a><br>
             <br>
             <h4>{{ question }} - {{user}}</h4>
 
-          <form method="post">
+          <form class="comment">
           <div class="form-group">
             <input type="hidden" name="id" value="{{_id}}">
           </div>
@@ -385,8 +378,9 @@ Pondicherry </a><br>
                <div class="form-group" >
                   <input type="text" name="comment" placeholder="comment...">
           
-                   <button type="submit" class="postbtns" style="outline:none">Comment</button>
+                   
                </div>
+               <button type="submit" class="postbtns" style="outline:none">Comment</button>
            </form>
 
            

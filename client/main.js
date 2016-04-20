@@ -90,6 +90,12 @@ if (Meteor.isClient)
 Template.scholarships.helpers({
     'schol': function(){
         return ScholList.find({})
+    },
+
+     'sch': function () {
+      var type = Session.get('type');
+      var gender = Session.get('gender');
+      return ScholList.find({type:{$in:[type]},gender:{$in:[gender]}});
     }
 });
 
@@ -98,15 +104,16 @@ Template.scholarships.events({
         event.preventDefault();
         var type = event.target.types.value;
         var gender = event.target.gender.value;
-        }
-      
-         
-       'sch': function(event){
-        return ScholList.find({'type':type,'gender':gender})
-       }
-        
+        Session.set('type', type);
+        Session.set('gender',gender);
+        }       
+}); 
     
-});
+
+
+
+
+
       
 
 Template.scholDisplay.events({
@@ -199,9 +206,9 @@ Template.scholDashDisp.events({
 // });
 
 Template.postForm.events({
-    'submit form':function(event){
+    'submit .post':function(event){
         event.preventDefault();
-
+        console.log("Hola");
         var newPost = {
             question : event.target.post.value,
             user : Meteor.user().username,
@@ -221,14 +228,14 @@ Template.discussion.helpers({
 });
 
 Template.discussion.events({
-    'submit form': function(event){
+    'submit .comment': function(event){
         event.preventDefault();
             
             var questionId = event.target.id.value;
-            console.log(questionId);
+            console.log("Hello World");
            
            var cmnts;
-           
+            
             if(event.target.comment.value){
                 cmnts = 
                 {
@@ -248,8 +255,9 @@ Template.discussion.events({
     }
 });
 
-// Meteor.subscribe('dispSchol');
-// Meteor.subscribe('scholList');
+Meteor.subscribe('dispSchol');
+Meteor.subscribe('scholList');
+Meteor.subscribe('post');
 
 }/* if statement*/
 
