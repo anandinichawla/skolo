@@ -91,11 +91,18 @@ Template.scholarships.helpers({
     'schol': function(){
         return ScholList.find({})
     },
+// <<<<<<< HEAD
 
      'sch': function () {
       var type = Session.get('type');
       var gender = Session.get('gender');
       return ScholList.find({type:{$in:[type]},gender:{$in:[gender]}});
+// =======
+//     'sch': function () {
+//       var type = Session.get('type');
+//       var gender = Session.get('gender');
+//       return ScholList.find({type:type,gender:gender});
+// >>>>>>> 94586f7dae322e1611c3228ece8a7cbb44f1c089
     }
 });
 
@@ -106,8 +113,14 @@ Template.scholarships.events({
         var gender = event.target.gender.value;
         Session.set('type', type);
         Session.set('gender',gender);
+// <<<<<<< HEAD
         }       
 }); 
+// =======
+        // }
+      
+   
+// >>>>>>> 94586f7dae322e1611c3228ece8a7cbb44f1c089
     
 
 

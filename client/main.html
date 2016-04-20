@@ -225,15 +225,38 @@
 
 <div class="container">
 
+<!-- <<<<<<< HEAD
  {{#each sch}}
+======= -->
+<!--   <ul>
+    {{#each schol}}
+      {{>scholDisplay}}
+    {{/each}}
+    </ul> -->
+
+    <ul>
+    
+    {{#each sch}}
+<!-- >>>>>>> 94586f7dae322e1611c3228ece8a7cbb44f1c089 -->
       {{>scholDisplay}}
         {{else}}
         {{#each schol}}
         {{>scholDisplay}}
       {{/each}}
     {{/each}}
+<!-- <<<<<<< HEAD
+======= -->
+    </ul>
 
 </div>
+
+
+<!-- <div class="container">
+
+  
+>>>>>>> 94586f7dae322e1611c3228ece8a7cbb44f1c089
+
+</div> -->
 
 </template>
 
