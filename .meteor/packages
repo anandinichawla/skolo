@@ -23,8 +23,4 @@ bootstrap
 accounts-password
 accounts-ui
 twbs:bootstrap
-<<<<<<< HEAD
-=======
-autopublish
->>>>>>> 94586f7dae322e1611c3228ece8a7cbb44f1c089
 session
